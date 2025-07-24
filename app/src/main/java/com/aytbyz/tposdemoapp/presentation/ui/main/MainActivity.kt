@@ -1,11 +1,10 @@
-package com.aytbyz.tposdemoapp.presentation
+package com.aytbyz.tposdemoapp.presentation.ui.main
 
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.RequiresApi
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -19,16 +18,20 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.aytbyz.tposdemoapp.presentation.navigation.NavRoutes
-import com.aytbyz.tposdemoapp.presentation.theme.ui.TposDemoAppTheme
-import com.aytbyz.tposdemoapp.presentation.ui.main.MainScreen
+import com.aytbyz.tposdemoapp.presentation.theme.TposDemoAppTheme
+import com.aytbyz.tposdemoapp.presentation.ui.home.MainScreen
 import com.aytbyz.tposdemoapp.presentation.ui.sales.SalesListScreen
-import com.aytbyz.tposdemoapp.domain.model.Sale
+import com.aytbyz.tposdemoapp.domain.model.sale.Sale
 import com.aytbyz.tposdemoapp.presentation.ui.nfc_payment.NfcPaymentScreen
 import com.aytbyz.tposdemoapp.presentation.ui.product_list.ProductListScreen
 import com.aytbyz.tposdemoapp.presentation.ui.qr_payment.QrPaymentScreen
 import com.aytbyz.tposdemoapp.presentation.ui.settings.SettingsScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val startupViewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

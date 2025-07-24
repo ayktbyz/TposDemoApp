@@ -1,4 +1,4 @@
-package com.aytbyz.tposdemoapp.presentation.ui.settings
+package com.aytbyz.tposdemoapp.presentation.ui.settings.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

@@ -14,7 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.aytbyz.tposdemoapp.domain.model.Sale
+import com.aytbyz.tposdemoapp.domain.model.sale.Sale
 import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.Alignment
 

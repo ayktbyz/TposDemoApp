@@ -1,4 +1,4 @@
-package com.aytbyz.tposdemoapp.domain.model
+package com.aytbyz.tposdemoapp.domain.model.sale
 
 data class Sale(
     val productId: String,

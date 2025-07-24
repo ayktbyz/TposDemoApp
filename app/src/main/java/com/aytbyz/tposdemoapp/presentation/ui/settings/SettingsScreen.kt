@@ -12,9 +12,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.aytbyz.tposdemoapp.R
 import com.aytbyz.tposdemoapp.domain.model.language.Language
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.aytbyz.tposdemoapp.presentation.ui.settings.viewmodel.SettingsIntent
+import com.aytbyz.tposdemoapp.presentation.ui.settings.viewmodel.SettingsViewModel
 
 @Composable
-fun SettingsScreen(viewModel: SettingsViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+fun SettingsScreen(
+    viewModel: SettingsViewModel = viewModel()
+) {
     val activity = LocalActivity.current
     val localeFromContext =
         activity?.resources?.configuration?.locales?.get(0)?.language ?: Language.TR.code
@@ -37,8 +42,7 @@ fun SettingsScreen(viewModel: SettingsViewModel = androidx.lifecycle.viewmodel.c
 
         Language.allLanguages.forEach { language ->
             LanguageOption(
-                label = language.label,
-                isSelected = selectedLanguage == language.code
+                label = language.label, isSelected = selectedLanguage == language.code
             ) {
                 activity?.let {
                     viewModel.onIntent(SettingsIntent.ChangeLanguage(language.code), it)
@@ -55,8 +59,7 @@ fun LanguageOption(label: String, isSelected: Boolean, onClick: () -> Unit) {
             .fillMaxWidth()
             .clickable { onClick() }
             .padding(vertical = 8.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
+        horizontalArrangement = Arrangement.SpaceBetween) {
         Text(text = label)
 
         if (isSelected) {

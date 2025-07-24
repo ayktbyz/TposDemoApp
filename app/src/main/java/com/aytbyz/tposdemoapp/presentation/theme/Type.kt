@@ -1,4 +1,4 @@
-package com.aytbyz.tposdemoapp.presentation.theme.ui
+package com.aytbyz.tposdemoapp.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,9 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.aytbyz.tposdemoapp.R
-import com.aytbyz.tposdemoapp.domain.model.Product
-import com.aytbyz.tposdemoapp.domain.model.ProductUIDummy
+import com.aytbyz.tposdemoapp.domain.model.product.Product
 import com.aytbyz.tposdemoapp.presentation.ui.components.bottomsheet.PaymentOptionsBottomSheet
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun ProductListScreen(
@@ -32,7 +33,10 @@ fun ProductListScreen(
     onSelectNfc: () -> Unit,
     onSelectLoyalty: () -> Unit
 ) {
-    val dummyProducts = ProductUIDummy.getDummyProducts()
+    val viewModel: ProductListViewModel = hiltViewModel()
+
+    val productList by viewModel.products.collectAsState()
+
     var paymentOptionsBottomShowSheet by remember { mutableStateOf(false) }
 
     if (paymentOptionsBottomShowSheet) {
@@ -62,7 +66,7 @@ fun ProductListScreen(
             verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(dummyProducts) { product ->
+            items(productList) { product ->
                 ProductCard(
                     product = product,
                     onBuyClick = { paymentOptionsBottomShowSheet = true })

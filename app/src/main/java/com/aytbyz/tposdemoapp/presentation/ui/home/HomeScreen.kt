@@ -1,4 +1,4 @@
-package com.aytbyz.tposdemoapp.presentation.ui.main
+package com.aytbyz.tposdemoapp.presentation.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
