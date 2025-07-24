@@ -14,4 +14,10 @@
     <string name="nfc_payment_welcome">Welcome to the NFC payment screen.</string>
 
     <string name="buy_now">Buy Now</string>
+    <string name="language">Language</string>
+
+    <string name="home_title">Home</string>
+    <string name="sales_title">Sales</string>
+    <string name="settings_title">Settings</string>
+    <string name="qr_payment_title">QR Payment</string>
 </resources>
