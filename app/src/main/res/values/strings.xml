@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TposDemoApp</string>
+
+    <string name="nfc_payment_title">NFC ile Ödeme</string>
+    <string name="nfc_payment_welcome">NFC ile ödeme ekranına hoş geldiniz.</string>
+
+</resources>

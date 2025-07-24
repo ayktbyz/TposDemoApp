@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TposDemoApp</string>
+
+    <string name="nfc_payment_title">NFC Payment</string>
+    <string name="nfc_payment_welcome">Welcome to the NFC payment screen.</string>
+</resources>
