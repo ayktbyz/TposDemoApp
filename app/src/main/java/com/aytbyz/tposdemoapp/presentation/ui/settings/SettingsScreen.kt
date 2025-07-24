@@ -1,9 +1,6 @@
 package com.aytbyz.tposdemoapp.presentation.ui.settings
 
-import android.app.Activity
-import android.os.Build
 import androidx.activity.compose.LocalActivity
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -14,19 +11,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.aytbyz.tposdemoapp.R
-import com.aytbyz.tposdemoapp.domain.model.LanguageItem
-import com.aytbyz.tposdemoapp.presentation.util.setAppLocale
+import com.aytbyz.tposdemoapp.domain.model.language.Language
 
 @Composable
-fun SettingsScreen() {
+fun SettingsScreen(viewModel: SettingsViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
     val activity = LocalActivity.current
-    val currentLocale = activity!!.resources.configuration.locales[0].language
-    var selectedLanguage by remember { mutableStateOf(currentLocale) }
+    val localeFromContext =
+        activity?.resources?.configuration?.locales?.get(0)?.language ?: Language.TR.code
+    val selectedLanguage by viewModel.selectedLanguage.collectAsState()
 
-    val languageOptions = listOf(
-        LanguageItem("tr", "Türkçe 🇹🇷"),
-        LanguageItem("en", "English 🇺🇸")
-    )
+    LaunchedEffect(Unit) {
+        viewModel.initializeCurrentLocale(localeFromContext)
+    }
 
     Column(
         modifier = Modifier
@@ -39,13 +35,14 @@ fun SettingsScreen() {
             style = MaterialTheme.typography.titleMedium
         )
 
-        languageOptions.forEach { item ->
+        Language.allLanguages.forEach { language ->
             LanguageOption(
-                label = item.label,
-                isSelected = selectedLanguage == item.code
+                label = language.label,
+                isSelected = selectedLanguage == language.code
             ) {
-                selectedLanguage = item.code
-                setAppLocale(activity, item.code)
+                activity?.let {
+                    viewModel.onIntent(SettingsIntent.ChangeLanguage(language.code), it)
+                }
             }
         }
     }

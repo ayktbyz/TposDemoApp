@@ -1,4 +1,4 @@
-package com.aytbyz.tposdemoapp.domain.model
+package com.aytbyz.tposdemoapp.domain.model.language
 
 data class LanguageItem(
     val code: String,
