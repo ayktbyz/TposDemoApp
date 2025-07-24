@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">TposDemoApp</string>
 
+    <string name="welcome_text">Hoş Geldiniz</string>
+    <string name="choose_payment_method">Ödeme Yöntemi Seçin</string>
+    <string name="pay_with_qr">QR ile Ödeme</string>
+    <string name="pay_with_nfc">Kredi Kartı (NFC)</string>
+    <string name="pay_with_loyalty">Sadakat Kartı (NFC)</string>
+
+    <string name="products_title">Ürünler</string>
+
     <string name="nfc_payment_title">NFC ile Ödeme</string>
     <string name="nfc_payment_welcome">NFC ile ödeme ekranına hoş geldiniz.</string>
 
+    <string name="buy_now">Satın Al</string>
 </resources>

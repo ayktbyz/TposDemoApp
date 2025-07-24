@@ -2,6 +2,16 @@
 <resources>
     <string name="app_name">TposDemoApp</string>
 
+    <string name="welcome_text">Welcome</string>
+    <string name="choose_payment_method">Select Payment Method</string>
+    <string name="pay_with_qr">Pay with QR</string>
+    <string name="pay_with_nfc">Credit Card (NFC)</string>
+    <string name="pay_with_loyalty">Loyalty Card (NFC)</string>
+
+    <string name="products_title">Products</string>
+
     <string name="nfc_payment_title">NFC Payment</string>
     <string name="nfc_payment_welcome">Welcome to the NFC payment screen.</string>
+
+    <string name="buy_now">Buy Now</string>
 </resources>

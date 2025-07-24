@@ -79,16 +79,14 @@ fun MainScaffold(navController: NavHostController) {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(NavRoutes.Home.route) {
-                MainScreen(
-                    onSelectQr = { navController.navigate(NavRoutes.Qr.route) },
-                    onSelectNfc = { navController.navigate(NavRoutes.Nfc.route) },
-                    onSelectLoyalty = { navController.navigate(NavRoutes.Nfc.route) }
-                )
+                MainScreen()
             }
 
             composable(NavRoutes.Products.route) {
                 ProductListScreen(
-                    onBack = { navController.popBackStack() }
+                    onSelectQr = { navController.navigate(NavRoutes.Qr.route) },
+                    onSelectNfc = { navController.navigate(NavRoutes.Nfc.route) },
+                    onSelectLoyalty = { navController.navigate(NavRoutes.Nfc.route) }
                 )
             }
 
