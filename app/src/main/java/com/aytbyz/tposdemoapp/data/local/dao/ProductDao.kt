@@ -17,4 +17,7 @@ interface ProductDao {
 
     @Query("SELECT COUNT(*) FROM products")
     suspend fun getProductCount(): Int
+
+    @Query("SELECT * FROM products ORDER BY RANDOM() LIMIT 1")
+    suspend fun getRandomProduct(): ProductEntity
 }

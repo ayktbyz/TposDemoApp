@@ -1,4 +1,4 @@
-package com.aytbyz.tposdemoapp.presentation.ui.components
+package com.aytbyz.tposdemoapp.presentation.ui.components.screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons

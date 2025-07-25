@@ -9,7 +9,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.aytbyz.tposdemoapp.R
 import com.aytbyz.tposdemoapp.domain.model.language.Language
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -32,12 +34,14 @@ fun SettingsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp),
+            .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
             text = stringResource(id = R.string.language),
-            style = MaterialTheme.typography.titleMedium
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp)
         )
 
         Language.allLanguages.forEach { language ->

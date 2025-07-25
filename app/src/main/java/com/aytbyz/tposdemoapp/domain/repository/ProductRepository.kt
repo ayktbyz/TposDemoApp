@@ -8,4 +8,5 @@ interface ProductRepository {
     suspend fun saveProducts(products: List<Product>)
     suspend fun clearProducts()
     suspend fun initializeProductsIfNeeded()
+    suspend fun getRandomProduct(): Product
 }

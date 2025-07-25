@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TposDemoApp</string>
+    <string name="app_name">TPOS</string>
 
     <string name="welcome_text">Welcome</string>
     <string name="choose_payment_method">Select Payment Method</string>
@@ -10,7 +10,6 @@
 
     <string name="products_title">Products</string>
 
-    <string name="nfc_payment_title">NFC Payment</string>
     <string name="nfc_payment_welcome">Welcome to the NFC payment screen.</string>
 
     <string name="buy_now">Buy Now</string>
@@ -19,5 +18,38 @@
     <string name="home_title">Home</string>
     <string name="sales_title">Sales</string>
     <string name="settings_title">Settings</string>
-    <string name="qr_payment_title">QR Payment</string>
+
+    <string name="camera_permission_denied">Camera permission denied. Please allow it from settings.</string>
+
+    <string name="error_title">Error</string>
+    <string name="error_invalid_qr">Invalid QR code.</string>
+    <string name="ok">OK</string>
+
+    <string name="countdown_prefix">⏳ Time left:</string>
+    <string name="seconds_suffix">seconds</string>
+    <string name="mqtt_connected">📶 MQTT Connected</string>
+    <string name="mqtt_disconnected">📴 MQTT Not Connected</string>
+
+    <string name="back_button">Back</string>
+    <string name="home_button_return">Return to Home</string>
+
+    <string name="qr_code_title">QR Code</string>
+    <string name="qr_code_description">Please scan the QR code.</string>
+    <string name="qr_code_content_description">QR Code</string>
+
+    <string name="error_data_blank">Data is empty.</string>
+    <string name="error_data_invalid">Invalid data received.</string>
+    <string name="error_timeout">Timeout: Operation failed.</string>
+
+    <string name="purchase_success_text">Purchase completed successfully</string>
+    <string name="no_sales_message">No sales found</string>
+
+    <string name="nfc_payment_title">NFC Payment</string>
+    <string name="nfc_payment_prompt">Please tap your card on the reader.</string>
+    <string name="nfc_card_read_success">✅ Card Read: %1$s</string>
+
+    <string name="nfc_product_info_title">🎉 Product Information</string>
+    <string name="nfc_product_id">Product ID: %1$d</string>
+
+    <string name="sale_deleted_message">Sale deleted successfully</string>
 </resources>

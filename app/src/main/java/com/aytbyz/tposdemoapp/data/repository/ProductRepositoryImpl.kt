@@ -31,4 +31,8 @@ class ProductRepositoryImpl(
             dao.insertAll(dummyProducts)
         }
     }
+
+    override suspend fun getRandomProduct(): Product {
+        return dao.getRandomProduct().toDomain()
+    }
 }

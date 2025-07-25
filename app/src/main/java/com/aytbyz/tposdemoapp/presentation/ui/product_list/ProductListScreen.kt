@@ -1,50 +1,63 @@
 package com.aytbyz.tposdemoapp.presentation.ui.product_list
 
+import androidx.compose.foundation.Image
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberAsyncImagePainter
 import com.aytbyz.tposdemoapp.R
-import com.aytbyz.tposdemoapp.domain.model.product.Product
-import com.aytbyz.tposdemoapp.presentation.ui.components.bottomsheet.PaymentOptionsBottomSheet
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.aytbyz.tposdemoapp.domain.model.product.Product
+import com.aytbyz.tposdemoapp.presentation.ui.components.card.ProductCard
+import com.aytbyz.tposdemoapp.presentation.util.QRUtils.generateQrBitmap
 
 @Composable
-fun ProductListScreen(
-    onSelectQr: () -> Unit,
-    onSelectNfc: () -> Unit,
-    onSelectLoyalty: () -> Unit
-) {
+fun ProductListScreen() {
     val viewModel: ProductListViewModel = hiltViewModel()
-
     val productList by viewModel.products.collectAsState()
 
-    var paymentOptionsBottomShowSheet by remember { mutableStateOf(false) }
+    var showQrDialog by remember { mutableStateOf(false) }
+    var selectedProduct by remember { mutableStateOf<Product?>(null) }
 
-    if (paymentOptionsBottomShowSheet) {
-        PaymentOptionsBottomSheet(
-            onSelectQr = { paymentOptionsBottomShowSheet = false },
-            onSelectNfc = { paymentOptionsBottomShowSheet = false },
-            onSelectLoyalty = { paymentOptionsBottomShowSheet = false },
-            onDismissRequest = { paymentOptionsBottomShowSheet = false }
+    if (showQrDialog && selectedProduct != null) {
+        val qrText =
+            "${selectedProduct!!.id}:${selectedProduct!!.name}:${selectedProduct!!.price}:${selectedProduct!!.imageUrl}"
+        val bitmap = remember(qrText) { generateQrBitmap(qrText) }
+
+        AlertDialog(
+            onDismissRequest = { showQrDialog = false },
+            confirmButton = {
+                Button(onClick = { showQrDialog = false }) {
+                    Text(text = stringResource(id = R.string.ok))
+                }
+            },
+            title = { Text(stringResource(id = R.string.qr_code_title)) },
+            text = {
+                Column {
+                    Text(stringResource(id = R.string.qr_code_description))
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Image(
+                        bitmap = bitmap.asImageBitmap(),
+                        contentDescription = stringResource(id = R.string.qr_code_content_description),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(300.dp)
+                    )
+                }
+            }
         )
     }
 
@@ -69,69 +82,11 @@ fun ProductListScreen(
             items(productList) { product ->
                 ProductCard(
                     product = product,
-                    onBuyClick = { paymentOptionsBottomShowSheet = true })
-            }
-        }
-    }
-}
-
-@Composable
-fun ProductCard(
-    product: Product,
-    onBuyClick: () -> Unit
-) {
-    val shape = RoundedCornerShape(12.dp)
-    val buttonShape = RoundedCornerShape(8.dp)
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .aspectRatio(0.85f)
-    ) {
-        Column(
-            modifier = Modifier.padding(8.dp)
-        ) {
-            Image(
-                painter = rememberAsyncImagePainter(product.imageUrl),
-                contentDescription = product.name,
-                contentScale = ContentScale.FillWidth,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(120.dp)
-                    .clip(shape)
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = product.name,
-                style = MaterialTheme.typography.labelLarge,
-                color = Color.Black
-            )
-
-            Spacer(modifier = Modifier.height(4.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "₺${product.price}",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = Color.Black
+                    onBuyClick = {
+                        selectedProduct = product
+                        showQrDialog = true
+                    }
                 )
-
-                Button(
-                    onClick = onBuyClick,
-                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 2.dp),
-                    shape = buttonShape
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.buy_now),
-                        fontSize = 12.sp
-                    )
-                }
             }
         }
     }

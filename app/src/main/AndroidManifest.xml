@@ -2,7 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
 
     <application
         android:name=".TPosDemoApplication"
@@ -16,6 +25,8 @@
         android:theme="@style/Theme.TposDemoApp"
         android:enableOnBackInvokedCallback="true"
         tools:targetApi="31">
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
+
         <activity
             android:name=".presentation.ui.main.MainActivity"
             android:exported="true"
@@ -26,6 +37,24 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".presentation.ui.nfc_payment.NfcPaymentActivity"
+            android:launchMode="singleTop"
+            android:exported="false"
+            android:theme="@style/Theme.NfcPaymentActivity">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter"/>
         </activity>
     </application>
 

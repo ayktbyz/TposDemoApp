@@ -14,6 +14,16 @@ room = "2.6.1"
 hilt = "2.50"
 hiltNavigationCompose = "1.2.0"
 lifecycleViewmodel = "2.7.0"
+camerax = "1.3.0"
+cameraxView = "1.3.0"
+mlkitBarcode = "17.0.3"
+pahoAndroid = "1.1.1"
+pahoClient = "1.2.5"
+androidxLocalBroadcast = "1.1.0"
+gson = "2.10.1"
+zxing = "3.5.2"
+activity = "1.8.2"
+appcompat = "1.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +49,19 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodel" }
+camerax-core = { group = "androidx.camera", name = "camera-core", version.ref = "camerax" }
+camerax-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "camerax" }
+camerax-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }
+camerax-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraxView" }
+mlkit-barcode-scanning = { group = "com.google.mlkit", name = "barcode-scanning", version.ref = "mlkitBarcode" }
+paho-android = { group = "org.eclipse.paho", name = "org.eclipse.paho.android.service", version.ref = "pahoAndroid" }
+paho-client = { group = "org.eclipse.paho", name = "org.eclipse.paho.client.mqttv3", version.ref = "pahoClient" }
+androidx-localbroadcast = { group = "androidx.localbroadcastmanager", name = "localbroadcastmanager", version.ref = "androidxLocalBroadcast" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
+zxing-android = { group = "com.journeyapps", name = "zxing-android-embedded", version = "4.3.0" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

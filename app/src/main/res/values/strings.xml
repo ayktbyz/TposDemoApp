@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TposDemoApp</string>
+    <string name="app_name">TPOS</string>
 
     <string name="welcome_text">Hoş Geldiniz</string>
     <string name="choose_payment_method">Ödeme Yöntemi Seçin</string>
@@ -17,5 +17,38 @@
     <string name="sales_title">Satışlar</string>
     <string name="settings_title">Ayarlar</string>
     <string name="qr_payment_title">QR ile Ödeme</string>
+
+    <string name="camera_permission_denied">Kamera izni reddedildi. Lütfen ayarlardan izin verin.</string>
+
+    <string name="error_title">Hata</string>
+    <string name="error_invalid_qr">Geçersiz QR kodu.</string>
+    <string name="ok">Tamam</string>
+
+    <string name="countdown_prefix">⏳ Kalan süre:</string>
+    <string name="seconds_suffix">saniye</string>
+    <string name="mqtt_connected">📶 MQTT Bağlı</string>
+    <string name="mqtt_disconnected">📴 MQTT Bağlı Değil</string>
+
+    <string name="back_button">Geri Dön</string>
+    <string name="home_button_return">Anasayfa\'ya Dön</string>
+
+    <string name="qr_code_title">QR Kodu</string>
+    <string name="qr_code_description">Lütfen QR kodu okutunuz.</string>
+    <string name="qr_code_content_description">QR Kod</string>
+
+    <string name="error_data_blank">Veri boş geldi.</string>
+    <string name="error_data_invalid">Veri hatalı geldi.</string>
+    <string name="error_timeout">Süre doldu, işlem başarısız.</string>
+
+    <string name="purchase_success_text">Satın alma işlemi başarıyla gerçekleşti</string>
+    <string name="no_sales_message">Satışınız bulunmamaktadır</string>
+
     <string name="nfc_payment_title">NFC ile Ödeme</string>
+    <string name="nfc_payment_prompt">Lütfen kartınızı okuyucuya yaklaştırın.</string>
+    <string name="nfc_card_read_success">✅ Kart Okundu: %1$s</string>
+
+    <string name="nfc_product_info_title">🎉 Ürün Bilgileri</string>
+    <string name="nfc_product_id">Ürün ID: %1$d</string>
+
+    <string name="sale_deleted_message">Satış başarıyla silindi</string>
 </resources>
