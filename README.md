@@ -39,7 +39,7 @@ Proje, Clean Architecture ilkelerine uygun olarak 3 ana katmanda organize edilmi
 
 1. **Projeyi klonla:**
    ```bash
-   git clone https://github.com/kullaniciAdi/tposdemoapp.git
+   git clone https://github.com/ayktbyz/tposdemoapp.git
 
 
 # 💳 Detaylı Özet
