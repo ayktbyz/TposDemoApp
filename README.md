@@ -1,5 +1,49 @@
 📁 Proje Yapısı Açıklaması
 
+# 💳 TPOS Demo App
+
+**TPOS Demo App**, NFC ve QR kod ile ödeme işlemlerinin simüle edildiği, satışların kaydedildiği ve listelendiği bir Android uygulamasıdır. Uygulama Jetpack Compose ve Clean Architecture prensipleriyle geliştirilmiştir.
+
+---
+
+## 🏛 Mimari Yapı
+
+Proje, Clean Architecture ilkelerine uygun olarak 3 ana katmanda organize edilmiştir:
+
+### 📦 `data/` – Veri Katmanı
+- **`local/dao/`** – Room DAO arayüzleri
+- **`mapper/`** – Entity <-> Domain dönüşümleri
+- **`repository/`** – Repository implementasyonları (`ProductRepositoryImpl`, `SaleRepositoryImpl`)
+
+### 💼 `domain/` – İş Kuralları Katmanı
+- **`model/`** – Domain modelleri (`Sale`, `Product`, `PaymentType`)
+- **`repository/`** – Repository arayüzleri
+- **`usecase/`** – UseCase sınıfları (`CreateSaleWithRandomProductUseCase`, `DeleteSaleUseCase`)
+
+### 🎨 `presentation/` – Arayüz Katmanı
+- **`components/`** – Reusable UI bileşenleri (`SaleCard`, `PaymentMethodRow`)
+- **`nfc_payment/`** – NFC ile ödeme ekranı
+- **`qr_payment/`** – QR ile ödeme ekranı
+- **`sales/`** – Satış listesi ekranı
+- **`settings/`** – Ayarlar ekranı
+- **`util/`** – Yardımcı sınıflar (`NfcManager`, zaman dönüştürücü vs.)
+
+### 📁 Diğer Klasörler ve Dosyalar
+- **`res/`** – Kaynak dosyaları (`strings.xml`, `themes.xml`, ikonlar)
+- **`MainActivity.kt`** – Uygulamanın giriş noktası
+- **`TPosDemoApplication.kt`** – Hilt uygulama başlatıcısı
+
+---
+
+## ⚙️ Kurulum
+
+1. **Projeyi klonla:**
+   ```bash
+   git clone https://github.com/kullaniciAdi/tposdemoapp.git
+
+
+# 💳 Detaylı Özet
+
 📦 DATA
 
 Veri kaynaklarının yer aldığı katmandır. Bu katman Room DAO arayüzlerini, entity-domain dönüşüm işlemlerini ve repository implementasyonlarını içerir.
