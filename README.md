@@ -18,10 +18,10 @@ Proje, Clean Architecture ilkelerine uygun olarak 3 ana katmanda organize edilmi
 ### 💼 `domain/` – İş Kuralları Katmanı
 - **`model/`** – Domain modelleri (`Sale`, `Product`, `PaymentType`)
 - **`repository/`** – Repository arayüzleri
-- **`usecase/`** – UseCase sınıfları (`CreateSaleWithRandomProductUseCase`, `DeleteSaleUseCase`)
+- **`usecase/`** – UseCase sınıfları (`CreateSaleWithRandomProductUseCase`, `DeleteSaleUseCase` vs.)
 
 ### 🎨 `presentation/` – Arayüz Katmanı
-- **`components/`** – Reusable UI bileşenleri (`SaleCard`, `PaymentMethodRow`)
+- **`components/`** – Reusable UI bileşenleri (`SaleCard`, `PaymentMethodRow` vs.)
 - **`nfc_payment/`** – NFC ile ödeme ekranı
 - **`qr_payment/`** – QR ile ödeme ekranı
 - **`sales/`** – Satış listesi ekranı
