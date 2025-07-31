@@ -49,7 +49,8 @@
     <string name="nfc_card_read_success">✅ Card Read: %1$s</string>
 
     <string name="nfc_product_info_title">🎉 Product Information</string>
-    <string name="nfc_product_id">Product ID: %1$d</string>
+    <string name="nfc_product_id">Product ID: %s</string>
+
 
     <string name="sale_deleted_message">Sale deleted successfully</string>
 </resources>

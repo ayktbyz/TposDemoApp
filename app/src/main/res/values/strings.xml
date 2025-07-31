@@ -48,7 +48,7 @@
     <string name="nfc_card_read_success">✅ Kart Okundu: %1$s</string>
 
     <string name="nfc_product_info_title">🎉 Ürün Bilgileri</string>
-    <string name="nfc_product_id">Ürün ID: %1$d</string>
+    <string name="nfc_product_id">Ürün ID: %s</string>
 
     <string name="sale_deleted_message">Satış başarıyla silindi</string>
 </resources>

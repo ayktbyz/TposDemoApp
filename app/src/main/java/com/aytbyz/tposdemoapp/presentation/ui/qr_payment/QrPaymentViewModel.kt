@@ -40,11 +40,17 @@ class QrPaymentViewModel @Inject constructor(
     private val _mqttConnected = MutableStateFlow(false)
     val mqttConnected = _mqttConnected.asStateFlow()
 
+    private var scannedProduct: Product? = null
+
     init {
         beep.startTone(ToneGenerator.TONE_PROP_BEEP, 250)
 
         MqttManager.connect(context) { success ->
             _mqttConnected.value = success
+
+            if (success && scannedProduct != null) {
+                sendMqttMessage(scannedProduct!!)
+            }
         }
     }
 
@@ -59,12 +65,15 @@ class QrPaymentViewModel @Inject constructor(
 
         try {
             val product = parseProductData(data)
-
-            sendMqttMessage(product)
+            scannedProduct = product
             startCountdown()
+            _qrState.update { it.copy(scannedProduct = product) }
+
+            if (mqttConnected.value) {
+                sendMqttMessage(product)
+            }
 
             beep.startTone(ToneGenerator.TONE_PROP_BEEP, 250)
-            _qrState.update { it.copy(scannedProduct = product) }
         } catch (e: Exception) {
             _errorMessage.value = context.getString(R.string.error_data_invalid)
             _showErrorPopup.value = true
